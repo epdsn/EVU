@@ -1,0 +1,1084 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <style type="text/css" data-type="vc_custom-css">
+        /* ==== MAIN CONTENT STYLING ====*/
+        .mobile-container, .separator {
+            display: none;
+        }
+
+        .banner {
+            overflow: hidden;
+        }
+
+        .page-title-container {
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .page-title-row {
+            max-width: 1024px;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        span.avoidWrap {
+            display: inline-block;
+        }
+
+        .header {
+            padding: 0;
+        }
+
+        .description-container {
+            margin: 0 auto;
+        }
+
+        .description-row {
+            margin: 0 auto;
+            max-width: 1024px;
+            padding: 20px 0;
+            width: 90%;
+        }
+
+        .about {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+            .about h3 {
+                padding-bottom: 15px;
+            }
+
+        .features {
+            padding-left: 5%;
+            padding-right: 0;
+        }
+
+            .features h3 {
+                padding-bottom: 15px;
+            }
+
+            .features li {
+                list-style-type: none !important;
+                padding: 0 !important;
+            }
+
+        .info {
+            padding: 0;
+        }
+
+            .info h3 {
+                padding-bottom: 15px;
+            }
+
+        .availability-container {
+            margin: 0 auto;
+            padding: 0px 15px;
+        }
+
+        .availability-column {
+            width: 90%;
+            max-width: 1024px;
+            margin-right: auto;
+            margin-left: auto;
+            float: none;
+            padding: 20px 0 15px 0;
+        }
+
+        .availability-title h3 {
+            padding-bottom: 7px;
+        }
+        /*===== AVAILABILITY TAB MENU BUTTON STYLING =====*/
+        .tabs-nav li a {
+            border-bottom: 3px solid transparent;
+            height: 35px !important;
+            margin: 0 14px !important;
+            padding: 0 !important;
+        }
+
+        .tabs-nav li:first-child a {
+            margin-left: 0 !important;
+        }
+
+        .tabs-nav li a:hover,
+        .tabs-nav li.active a {
+            border-bottom: 3px solid #1abc9c;
+            color: #1abc9c !important;
+            transition: all .5s ease-in-out;
+            -webkit-transition: all .5s ease-in-out;
+            -moz-transition: all .5s ease-in-out;
+            -o-transition: all .5s ease-in-out;
+        }
+
+        ul.tabs {
+            border-top: 1px solid #eee;
+            margin-top: -13px;
+            padding: 0;
+            float: left;
+            list-style: none;
+            width: 225px;
+        }
+
+            ul.tabs li {
+                color: #b4b4b4;
+                cursor: pointer;
+                float: left;
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 1px;
+                margin: 0;
+                overflow: hidden;
+                padding: 5px 10px;
+                position: relative;
+                transition: all .5s ease-in-out;
+                -webkit-transition: all .5s ease-in-out;
+                -moz-transition: all .5s ease-in-out;
+                -o-transition: all .5s ease-in-out;
+            }
+
+                ul.tabs li:first-child {
+                    padding-left: 0;
+                }
+
+                ul.tabs li:hover {
+                    color: #1abc9c;
+                    font-weight: 700;
+                }
+
+                ul.tabs li.active {
+                    color: #1abc9c;
+                    font-weight: 700;
+                }
+
+        .tab_content {
+            display: none;
+        }
+
+        .noContent {
+            display: inline-block;
+            color: #bc1a7b;
+            font-size: 20px;
+            font-weight: 500;
+            margin: 15px 0;
+            text-align: center;
+            text-transform: uppercase;
+            width: 100%;
+        }
+        /*====== IDX BROKER SHOWCASE MANIPULATION =======*/
+        .IDX-showcaseRow {
+            width: 100% !important;
+        }
+
+        .IDX-showcaseTable {
+            margin: 0 !important;
+        }
+
+        .IDX-showcaseCell {
+            height: auto !important;
+            border: 1px solid #ececec !important;
+            box-shadow: none !important;
+            color: black;
+            padding: 0 !important;
+            width: 24% !important;
+            text-align: left !important;
+        }
+
+            .IDX-showcaseCell div {
+                text-align: left !important;
+            }
+
+            .IDX-showcaseCell img {
+                transition: all .5s ease;
+                -webkit-transition: all .5s ease;
+                -moz-transition: all .5s ease;
+                -o-transition: all .5s ease;
+            }
+
+                .IDX-showcaseCell img:hover {
+                    opacity: .65;
+                }
+
+        .IDX-showcasePhoto {
+            float: left;
+            opacity: .9;
+            width: 100%;
+            height: 100%;
+            min-height: 150px !important;
+        }
+
+        .IDX-showcaseListingID {
+            visibility: visible;
+            color: #23ccae;
+            display: block !important;
+            position: absolute;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 15px;
+            padding-left: 8px;
+        }
+
+            .IDX-showcaseListingID:before {
+                content: "MLS# ";
+            }
+
+        .IDX-showcaseAddress {
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 16px;
+            padding-top: 28px;
+            padding-left: 8px;
+            width: 100%;
+        }
+
+        .IDX-showcaseCityStateZip {
+            float: left;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 16px;
+            padding-bottom: 5px;
+            padding-left: 8px;
+            width: 100%;
+        }
+
+        .IDX-showcasePrice {
+            color: #23CCAE;
+            font-size: large;
+            font-weight: 600;
+            line-height: 14px;
+            padding-right: 8px;
+            position: absolute;
+            right: 0;
+        }
+
+        .IDX-showcaseBeds {
+            visibility: visible;
+            display: block !important;
+            clear: left;
+            float: left;
+            font-size: 14px;
+            line-height: 16px;
+            padding-left: 8px;
+        }
+
+        .IDX-showcaseBaths {
+            visibility: visible;
+            display: block !important;
+            float: left;
+            font-size: 14px;
+            line-height: 16px;
+            padding: 0 0 8px 10px;
+        }
+        /*=========== SCHOOL CARDS ============*/
+        .schools-container {
+            margin: 0 auto;
+            padding: 0 15px 20px 15px;
+        }
+
+        .schools-separator {
+            display: block !important;
+            margin: 0 0 20px 0;
+        }
+
+        .schools-column {
+            float: none;
+            margin: 0 auto;
+            max-width: 1024px;
+            padding: 0;
+            width: 90%;
+        }
+
+        .school-card-wrapper {
+            margin: 5px 0 10px 0;
+            overflow: auto;
+        }
+
+        .school-card {
+            border: 1px solid #ececec;
+            float: left;
+            margin-left: 10px;
+            width: calc(33% - 6.8px);
+        }
+
+            .school-card:nth-of-type(1) {
+                margin-left: 0;
+            }
+
+        .card_header {
+            background-color: #e4e4e4;
+            overflow: auto;
+            padding: 8px;
+        }
+
+        .card_header_text {
+            float: left;
+            padding-top: 3px;
+        }
+
+            .card_header_text p {
+                font-size: 14px;
+            }
+
+        .card_body {
+            padding: 8px 8px;
+        }
+
+            .card_body h4 {
+                color: #1abc9c;
+            }
+
+        .card_rating_wrapper {
+            float: right;
+        }
+
+            .card_rating_wrapper p {
+                font-size: 6px;
+                line-height: 11px;
+            }
+
+        .rating_green {
+            background-color: #66aa72;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            width: 22px;
+        }
+
+        .rating_orange {
+            background-color: #efab3f;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            width: 22px;
+        }
+
+        .rating_red {
+            background-color: #c1514e;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            width: 22px;
+        }
+
+        .rating_nr {
+            background-color: #999999;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            height: 22px;
+            line-height: 22px;
+            text-align: center;
+            width: 22px;
+        }
+
+        .card_district {
+            font-size: 12px;
+            line-height: 11px;
+            margin-bottom: 10px;
+        }
+
+        .card_address {
+            font-size: 16px;
+            line-height: 18px;
+            margin-bottom: 12px;
+        }
+
+        .card_phone,
+        .card_website {
+            font-size: 14px;
+            line-height: 14px;
+        }
+
+        .card_body .fa.fa-globe,
+        .card_body .fa.fa-phone {
+            color: #1abc9c;
+            margin-right: 5px;
+        }
+
+        .card_body .fa.fa-phone {
+            margin-left: 2px;
+        }
+        /*=========== CTA - LIST PROPERTY ===========*/
+        .list-property-title {
+            padding: 25px 14px 0 14px;
+        }
+
+            .list-property-title h3 {
+                color: #fff;
+                font-size: 24px;
+            }
+        /*=========== NEARBY COMMUNITIES ===========*/
+        .nearby-properties-container {
+            margin: 0 auto;
+            max-width: 1024px;
+            padding: 20px 0;
+            width: 90%;
+        }
+
+        .nearby-properties-column {
+            padding: 0;
+        }
+
+        .nearby-properties-frames {
+            margin: auto;
+            width: 100%;
+        }
+
+        .nearby-properties-text {
+            margin-bottom: 5px;
+        }
+
+            .nearby-properties-text h4 {
+                font-size: 18px;
+            }
+
+        .nearby-button {
+            clear: left;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 29px;
+            text-align: center;
+            width: 45%;
+        }
+
+            .nearby-button a {
+                background-color: #1abc9c;
+                color: #fff;
+                transition: all .25s ease;
+                -webkit-transition: all .25s ease;
+                -moz-transition: all .25s ease;
+                -o-transition: all .25s ease;
+            }
+
+                .nearby-button a:hover {
+                    background-color: #1fdfb9;
+                    color: #fff;
+                }
+
+        .nearby-properties-title {
+            padding-bottom: 15px;
+        }
+
+        .other-properties {
+            padding: 0 5px;
+        }
+
+        .other-properties-image {
+            margin-bottom: 5px !important;
+            width: 100%;
+        }
+
+            .other-properties-image a {
+                display: block;
+            }
+
+            .other-properties-image.wpb_single_image img {
+                width: 100%;
+            }
+        /*=========== CONTACT FORM MANIPULATION ==============*/
+        .contact-form-separator {
+            display: block !important;
+        }
+
+        .contact-form-container {
+            margin: 0 auto;
+            padding: 20px 0 0 0;
+        }
+
+            .contact-form-container h3 {
+                padding-bottom: 15px;
+            }
+
+            .contact-form-container .section_inner {
+                margin: 0 auto;
+                max-width: 1024px;
+                width: 90% !important;
+            }
+
+        @media screen and (max-width: 991px) {
+            .page-title-container {
+                padding-bottom: 0;
+                padding-top: 15px;
+            }
+
+            .page-title-row {
+                width: 100%;
+            }
+
+            h3 {
+                font-size: 24px;
+                padding-bottom: 10px;
+                text-align: center;
+            }
+
+            .header {
+                width: 100%;
+                margin: 0 auto !important;
+                text-align: center !important;
+            }
+
+            .list-button {
+                display: none;
+            }
+
+            .description-container {
+                display: none;
+            }
+
+            .availability-container {
+                padding: 5px 0 0 0;
+            }
+
+            .availability-column {
+                padding: 0;
+                width: 94%;
+            }
+
+            .availability-title {
+                margin: auto;
+                width: 100%;
+            }
+
+            .q_tabs.horizontal.left {
+                text-align: center;
+            }
+
+            .tabs-nav li:first-child a {
+                margin-left: 15px !important;
+            }
+
+            ul.tabs {
+                float: none;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+                ul.tabs li {
+                    display: inline-block;
+                    float: none;
+                }
+
+                    ul.tabs li:first-child {
+                        padding-left: 10px;
+                    }
+
+            .IDX-showcaseTable .separator {
+                display: none;
+            }
+
+            .IDX-showcaseCell {
+                width: 32% !important;
+            }
+
+            .mobile-description-container {
+                display: block;
+                margin: 0 auto;
+                padding: 0 1.5% 10px 1.5% !important;
+            }
+
+                .mobile-description-container li a {
+                    letter-spacing: 0 !important;
+                    font-size: 13px !important;
+                }
+
+            .separator {
+                display: block;
+            }
+
+            .features {
+                padding-left: 0;
+            }
+
+                .features ul {
+                    overflow: hidden;
+                }
+
+                .features li {
+                    float: left;
+                    width: 33.333333%;
+                }
+
+                .features p {
+                    line-height: 30px;
+                }
+
+            .schools-container {
+                padding: 0 1.5% 20px 1.5%;
+            }
+
+            .schools-column {
+                padding: 0 15px;
+                width: 100%;
+            }
+
+            .schools-separator {
+                margin: 10px 0;
+            }
+
+            .contact-form-container {
+                padding: 20px 25px 0 25px;
+            }
+
+                .contact-form-container .section_inner {
+                    width: 100% !important;
+                }
+
+            .nearby-properties-container {
+                padding: 20px 1.5% 20px 1.5%;
+                width: auto;
+            }
+
+            .nearby-properties-column {
+                padding: 0 15px;
+            }
+
+            .nearby-properties-frames {
+                margin: auto;
+                width: 100%;
+            }
+
+            .nearby-properties-title {
+                padding-bottom: 0;
+            }
+
+            .other-properties {
+                float: left;
+                padding: 0 5px;
+                width: 33.33333333%;
+            }
+        }
+
+        @media screen and (max-width: 860px) {
+            .school-card {
+                float: none;
+                margin: 0 0 10px 0;
+                width: 99%;
+            }
+
+                .school-card:nth-of-type(3) {
+                    margin-bottom: 0;
+                }
+        }
+
+        @media screen and (max-width: 768px) {
+            .IDX-showcaseListingID {
+                font-size: 1.75vw;
+            }
+
+            .other-properties-text h4 {
+                font-size: 2vw;
+            }
+        }
+
+        @media screen and (max-width: 666px) {
+            .header h1 {
+                font-size: 5vw;
+                letter-spacing: 3px;
+                margin-bottom: 5px;
+            }
+
+            .header h2 {
+                font-size: 3.9vw !important;
+            }
+
+            .noContent {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+
+            .IDX-showcaseTable .separator {
+                display: block;
+            }
+
+            .IDX-showcaseCell {
+                margin: 3px !important;
+                width: 100% !important;
+                float: left;
+                clear: left;
+                border: none !important;
+                border-bottom: 1px solid #aaa !important;
+                padding-bottom: 6px !important;
+                position: relative;
+            }
+
+                .IDX-showcaseCell:nth-of-type(1) {
+                    border-top: 1px solid #aaa !important;
+                    padding-top: 6px !important;
+                }
+
+            .IDX-showcaseLink {
+                float: left !important;
+            }
+
+            .IDX-showcasePhoto {
+                width: 25% !important;
+                min-height: 90px !important;
+                max-height: 90px !important;
+            }
+
+            .IDX-showcaseListingID {
+                font-size: 14px;
+                margin-left: 27%;
+                padding-left: 0;
+            }
+
+            .IDX-showcaseAddress {
+                position: absolute;
+                margin-left: 27%;
+                padding-left: 0;
+                padding-top: 22px;
+            }
+
+            .IDX-showcaseCityStateZip {
+                position: absolute;
+                margin-left: 27%;
+                padding-left: 0;
+                padding-top: 38px;
+            }
+
+            .IDX-showcaseBeds {
+                position: absolute;
+                margin-left: 27%;
+                padding-left: 0;
+                padding-top: 55px;
+            }
+
+            .IDX-showcaseBaths {
+                position: absolute;
+                margin-left: 27%;
+                padding-left: 0;
+                padding-top: 74px;
+            }
+
+            .separator-mini-mobile {
+                display: none;
+            }
+
+            .features li {
+                width: 50%;
+            }
+
+            .features p {
+                line-height: 25px;
+            }
+
+            .nearby-properties-container {
+                padding: 20px 0 10px 0;
+            }
+
+            .nearby-properties-column {
+                padding: 0;
+            }
+
+            .other-properties {
+                float: none;
+                padding: 0 !important;
+                margin: auto;
+                width: 100%;
+            }
+
+                .other-properties:nth-of-type(1) {
+                    padding-top: 0 !important;
+                }
+
+                .other-properties img {
+                    margin: 0 !important;
+                }
+
+            .nearby-properties-text {
+                margin: 0;
+                position: absolute;
+                text-align: center;
+                top: 43%;
+                width: 100%;
+            }
+
+                .nearby-properties-text h4 {
+                    color: #fff;
+                    font-size: 6vw;
+                    font-weight: 600;
+                }
+
+            .nearby-button {
+                display: none;
+            }
+
+            .contact-form-separator {
+                display: none !important;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .header h2 {
+                font-size: 3.87vw !important;
+            }
+
+            h3 {
+                font-size: 22px;
+            }
+
+            .tab-content {
+                padding: 0 !important;
+            }
+        }
+
+        @media screen and (max-width: 525px) {
+            .header h2 {
+                font-size: 3.8vw !important;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .IDX-showcasePhoto {
+                min-height: 68px !important;
+                max-height: 68px !important;
+            }
+
+            .IDX-showcaseListingID {
+                font-size: 12.5px;
+            }
+
+            .IDX-showcaseAddress {
+                padding-top: 18px;
+            }
+
+            .IDX-showcaseCityStateZip {
+                padding-top: 34px;
+            }
+
+            .IDX-showcaseBeds {
+                padding-top: 52px;
+            }
+
+            .IDX-showcaseBaths {
+                margin-left: calc(27% + 83px);
+                padding-top: 52px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .header h2 {
+                font-size: 3.57vw !important;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .IDX-showcasePhoto {
+                min-height: 68px !important;
+                max-height: 68px !important;
+            }
+
+            .list-property-title h3 {
+                font-size: 20px;
+            }
+
+            .list-property-button a {
+                margin: 15px 0 25px 0;
+            }
+        }
+
+        @media screen and (max-width: 375px) {
+            .header h1 {
+                letter-spacing: 1px;
+            }
+
+            .header h2 {
+                font-size: 14px !important;
+            }
+
+            h3 {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 350px) {
+            .noContent {
+                font-size: 16px;
+            }
+
+            .contact-form-column {
+                padding: 0;
+            }
+        }
+    </style>
+
+
+    <!--my styles-->
+    <style>
+
+        #myStlye {
+            padding:100px;
+
+        }
+
+    </style>
+
+    <link href="StyleSheet.css" rel="stylesheet" />
+</head>
+<body id="myStlye">
+
+    <ul class="tabs">
+        <li class="active" rel="tab1">ALL</li>
+        <li rel="tab2">1BR</li>
+        <li rel="tab3">2BR</li>
+        <li rel="tab4">3BR+</li>
+    </ul>
+    <div class="tab_container">
+        <div id="tab1" class="tab_content">
+            <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-46299" src="http://www.eastvalleyurban.idxbroker.com/idx/customshowcasejs.php?widgetid=46299" defer></script>
+        </div>
+        <div id="tab2" class="tab_content">
+            <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-46300" src="http://www.eastvalleyurban.idxbroker.com/idx/customshowcasejs.php?widgetid=46300" defer></script>
+        </div>
+        <div id="tab3" class="tab_content">
+            <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-46301" src="http://www.eastvalleyurban.idxbroker.com/idx/customshowcasejs.php?widgetid=46301" defer></script>
+        </div>
+        <div id="tab4" class="tab_content">
+            <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-46302" src="http://www.eastvalleyurban.idxbroker.com/idx/customshowcasejs.php?widgetid=46302" defer></script>
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    (function ($) {
+
+        $(document).bind("mobileinit", function () {
+            // jQuery Mobile's Ajax navigation does not work in all cases (e.g.,
+            // when navigating from a mobile to a non-mobile page), especially when going back, hence disabling it.
+            $.extend($.mobile, {
+                ajaxEnabled: false
+            });
+        });
+
+        $('#MobileEmailButton').css('cursor', 'pointer');
+
+        function toggle_visibility(id) {
+
+            var e = $('#' + id);
+            var speed = 200;
+
+            if (e.css("display") == 'block') {
+                e.hide(speed, function () {
+                    //$( "body" ).height("auto");
+                });
+
+
+            } else {
+                e.show(speed);
+                //$( "body" ).height(0);
+            }
+        }
+
+        function checkIDXContent() {
+            var activeTabId = $("ul.tabs li.active").attr("rel");
+            var activeTabContent = $(".tab_container" + " #" + activeTabId + ' .IDX-showcaseTable');
+
+            // check if there is content on the selected tab.
+            // show message if content area is empty.
+            if (activeTabContent.html() == null || activeTabContent.html() == "") {
+                activeTabContent.html('<div class="noContent">WHOOPS, So sorry but there’s nothing available at this time!</div><div class="separator" style="background-color:#ddd;height:1px;"></div>').fadeIn();
+            }
+        }
+
+        $(document).ready(function () {
+
+            $(".tab_content").hide();
+            $(".tab_content:first").show();
+
+            $("ul.tabs li").click(function () {
+                $("ul.tabs li").removeClass("active");
+                $(this).addClass("active");
+                $(".tab_content").hide();
+                var activeTab = $(this).attr("rel");
+                $("#" + activeTab).fadeIn();
+
+                // triggers timeout to check for content and add
+                // message if no content is available.
+                var timeoutID = window.setTimeout(checkIDXContent, 800);
+            });
+
+            // activate 'ALL' tab when parent tab is selected.
+            // triggers javaScript code and loads data.
+            $("ul.tabs-nav > li a").click(function () {
+                var tabId = $(this).attr('href');
+                $("div" + tabId + " .tabs > li").first().click();
+            });
+
+            // triggers timeout to check for content and add
+            // message if no content is available.
+            var timeoutID = window.setTimeout(checkIDXContent, 800);
+
+
+            $(".camelback-content").click(function () {
+                $("#camelback-content").slideToggle(750);
+            });
+
+            $(".midtown-content").click(function () {
+                $("#midtown-content").slideToggle(750);
+            });
+
+            $(".downtown-content").click(function () {
+                $("#downtown-content").slideToggle(750);
+            });
+
+        });
+
+
+        function scrollNav() {
+            $('.jump-link-inner a').click(function () {
+
+                if ($(window).width() < 1001) {
+
+                    $('html, body').stop().animate({
+                        scrollTop: $($(this).attr('href')).offset().top - 15
+                    }, 750);
+                }
+                else {
+                    $('html, body').stop().animate({
+                        scrollTop: $($(this).attr('href')).offset().top - 90
+                    }, 750);
+                }
+                return false;
+            });
+        }
+        scrollNav();
+
+
+        // If browser is mobile, add Readmore functionality, use 'read-more-less' as a class name to enable it.
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            $('.read-more-less').readmore({
+                speed: 750,
+                moreLink: '<a href="#" class="read-more-button">+ Read More</a>',
+                lessLink: '<a href="#" class="read-more-button">- Read Less</a>',
+                collapsedHeight: 156
+            });
+        }
+
+    })(jQuery);
+</script>
+
+</html>
