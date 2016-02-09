@@ -923,6 +923,9 @@
                 padding: 0;
             }
         }
+
+
+
     </style>
 
 
@@ -940,6 +943,8 @@
 </head>
 <body id="myStlye">
 
+
+
     <ul class="tabs">
         <li class="active" rel="tab1">ALL</li>
         <li rel="tab2">1BR</li>
@@ -950,7 +955,7 @@
         <div id="tab1" class="tab_content">
             <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-46299" src="http://www.eastvalleyurban.idxbroker.com/idx/customshowcasejs.php?widgetid=46299" defer></script>
         </div>
-        <div id="tab2" class="tab_content">
+        <!--<div id="tab2" class="tab_content">
             <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-46300" src="http://www.eastvalleyurban.idxbroker.com/idx/customshowcasejs.php?widgetid=46300" defer></script>
         </div>
         <div id="tab3" class="tab_content">
@@ -958,11 +963,10 @@
         </div>
         <div id="tab4" class="tab_content">
             <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-46302" src="http://www.eastvalleyurban.idxbroker.com/idx/customshowcasejs.php?widgetid=46302" defer></script>
-        </div>
+        </div>-->
     </div>
 
 </body>
-
 <script type="text/javascript">
     (function ($) {
 
@@ -1012,13 +1016,16 @@
             $("ul.tabs li").click(function () {
                 $("ul.tabs li").removeClass("active");
                 $(this).addClass("active");
-                $(".tab_content").hide();
+                // $(".tab_content").hide();
                 var activeTab = $(this).attr("rel");
                 $("#" + activeTab).fadeIn();
 
+                showBedrooms($(this));
+
+
                 // triggers timeout to check for content and add
                 // message if no content is available.
-                var timeoutID = window.setTimeout(checkIDXContent, 800);
+                //var timeoutID = window.setTimeout(checkIDXContent, 800);
             });
 
             // activate 'ALL' tab when parent tab is selected.
@@ -1046,6 +1053,52 @@
             });
 
         });
+
+
+        function showBedrooms(clickedItem) {
+            // JQuery hide/show does not work because script content is injected with css !important properties.
+            var show = "box-sizing: border-box; height: 282px; display:inline-block !important";
+            var hide = "box-sizing: border-box; height: 0; width:0; display:none !important";
+            // get bedroom collections to show/hide below.
+            var onebeds = clickedItem.parent().next().find(".IDX-showcaseRow .IDX-showcaseContainer .IDX-showcaseBeds:contains('1 Bedrooms')").closest(".IDX-showcaseCell");
+            var twobeds = clickedItem.parent().next().find(".IDX-showcaseRow .IDX-showcaseContainer .IDX-showcaseBeds:contains('2 Bedrooms')").closest(".IDX-showcaseCell");
+            var threebeds = clickedItem.parent().next().find(".IDX-showcaseRow .IDX-showcaseContainer .IDX-showcaseBeds:contains('3 Bedrooms')").closest(".IDX-showcaseCell");
+            var allbeds = clickedItem.parent().next().find(".IDX-showcaseRow .IDX-showcaseContainer .IDX-showcaseBeds").closest(".IDX-showcaseCell");
+            // remove any no content message to user
+            $('.noContent').remove();
+            // filter bedrooms based on selection
+            switch (clickedItem.text()) {
+                case '1BR':
+                    allbeds.attr("style", hide);
+                    onebeds.attr("style", show);
+
+                    if (onebeds.length === 0) showNoBeds(onebeds);
+
+                    break;
+                case '2BR':
+                    allbeds.attr("style", hide);
+                    twobeds.attr("style", show);
+
+                    if (twobeds.length === 0) showNoBeds(twobeds);
+                    break;
+                case '3BR+':
+                    allbeds.attr("style", show);
+                    onebeds.attr("style", hide);
+                    twobeds.attr("style", hide);
+
+                    if (!allbeds.is(":visible")) showNoBeds(threebeds);
+                    break
+                default:
+                    onebeds.attr("style", show);
+                    twobeds.attr("style", show);
+                    threebeds.attr("style", show);
+            }
+            function showNoBeds(element) {
+                clickedItem.parent().next().append('<div class="noContent">WHOOPS, So sorry but there’s nothing available at this time!</div><div class="separator" style="background-color:#ddd;height:1px;"></div>').fadeIn()
+            }
+        }
+
+
 
 
         function scrollNav() {
